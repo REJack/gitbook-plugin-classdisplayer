@@ -67,8 +67,8 @@ module.exports = {
                 var method_name = parentBlock.args[0];
                 method_name = escape(method_name);
                 method_name_wo_args = method_name.match(/(\w+)/);
-                method_name = method_name.replace(/(\w+)/, "<b>$1</b>");
-                method_name = method_name.replace(/([$]\w+)/g, "<em>$1</em>");
+                method_name = method_name.replace(/(\w+)/, "<b>"+escape("$1")+"</b>");
+                method_name = method_name.replace(/([$]\w+)/g, "<em>"+escape("$1")+"</em>");
                 var method_desc = parentBlock.body.trim();
                 var method_params = '<ul>';
                 var method_return;
@@ -106,7 +106,7 @@ module.exports = {
                 }
                 return '<div class="PHPclassDisplayer-'+classSwitch+'">' +
                     '<a name="'+anchor+'"></a>'+
-                    '<div class="PHPcD-title">' + escape(method_name) + '</div>' +
+                    '<div class="PHPcD-title">' + method_name + '</div>' +
                     '<div class="PHPcD-desc">' + escape(method_desc) + 
                         '<table>' + 
                             params +

@@ -1,6 +1,6 @@
 {
     "name": "gitbook-plugin-phpclassdisplayer",
-    "version": "1.0.0-pre3",
+    "version": "1.0.0-pre4",
     "description": "a GitBook plugin to Display PHP's Classes, Methods/Functions & Constants",
     "main": "index.js",
     "engines": {
