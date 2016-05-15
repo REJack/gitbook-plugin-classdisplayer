@@ -1,4 +1,4 @@
-# gitbook-plugin-classdisplayer
+# gitbook-plugin-phpclassdisplayer
 
 Include detailed infos for PHP classes, methods, functions or constants to your GitBook. (for example when documenting a PHP Library)
 
