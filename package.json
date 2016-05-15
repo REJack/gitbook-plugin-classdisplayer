@@ -1,17 +1,27 @@
 {
     "name": "gitbook-plugin-phpclassdisplayer",
-    "version": "1.0.0-pre4",
-    "description": "a GitBook plugin to Display PHP's Classes, Methods/Functions & Constants",
+    "version": "1.0.0-pre5",
+    "description": "Display PHP's classes, methods, functions or constants in your GitBook",
     "main": "index.js",
-    "engines": {
-        "gitbook": ">=3.0.0-pre.8"
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/REJack/gitbook-plugin-phpclassdisplayer.git"
     },
     "keywords": [
         "gitbook",
-        "code",
+        "php",
         "classdisplayer"
     ],
+    "engines": {
+        "gitbook": ">=3.0.0-pre.8"
+    },
     "dependencies": {
         "escape-html": "^1.0.3"
-    }
+    },
+    "author": "Raphael Jackstadt <info@rejack.de>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/REJack/gitbook-plugin-phpclassdisplayer/issues"
+    },
+    "homepage": "https://github.com/REJack/gitbook-plugin-phpclassdisplayer#readme"
 }
