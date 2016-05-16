@@ -1,4 +1,4 @@
 # Summary
 
-* Welcome
+* Default Class View
 
