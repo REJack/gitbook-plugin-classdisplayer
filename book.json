@@ -1,4 +1,5 @@
 {
+    "root": "./docs",
     "gitbook": "3.0.0-pre.15",
     "plugins": [
         "-codetabs",
