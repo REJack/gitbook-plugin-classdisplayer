@@ -20,7 +20,6 @@ module.exports = {
             process: function(parentBlock) {
                 if(parentBlock){
                     var blocks = [parentBlock].concat(parentBlock.blocks);
-                    console.log(parentBlock.args[0]);
                     if (!parentBlock.args[0]) {
                         throw new Error('`PHPclassDisplayer` requires a argument as class-name');
                     }
