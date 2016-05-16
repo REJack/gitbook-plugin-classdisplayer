@@ -22,7 +22,7 @@ module.exports = {
                     var blocks = [parentBlock].concat(parentBlock.blocks);
                     console.log(parentBlock.args[0]);
                     if (!parentBlock.args[0]) {
-                        throw new Error('PHP class Displayer requires a argument as class-name');
+                        throw new Error('`PHPclassDisplayer` requires a argument as class-name');
                     }
                     var class_name = parentBlock.args[0];
                     gl_class_name = class_name;
@@ -40,7 +40,7 @@ module.exports = {
             process: function(parentBlock) {
                 var blocks = [parentBlock].concat(parentBlock.blocks);
                 if (!parentBlock.args[0]) {
-                    throw new Error('PHP class Displayer requires a argument as constant-name');
+                    throw new Error('`PHPconstDisplayer` requires a argument as constant-name');
                 }
                 var const_name = parentBlock.args[0];
                 var const_desc = parentBlock.body.trim();
@@ -62,7 +62,7 @@ module.exports = {
             process: function(parentBlock) {
                 var blocks = [parentBlock].concat(parentBlock.blocks);
                 if (!parentBlock.args[0]) {
-                    throw new Error('PHP class Displayer requires a argument as method/function-name');
+                    throw new Error('`PHPmethodDisplayer` requires a argument as method/function-name');
                 }
                 var method_name = parentBlock.args[0];
                 method_name = escape(method_name);
@@ -75,11 +75,21 @@ module.exports = {
                 var param_count = 0;
                 blocks.forEach(function(block, i) {
                     if(block.name == 'param'){
+                        if (!block.args[0]) {
+                            throw new Error('`PHPmethodDisplayer` requires for `param` a argument parameter-name');
+                        }
+                        if (!block.kwargs.type) {
+                            throw new Error('`PHPmethodDisplayer` requires for `param` a "type" property');
+                        }
                         param_count++;
+                        var param_body = '';
+                        if (block.body.trim() !== '') {
+                            param_body = '- '+escape(block.body.trim());
+                        }
                         method_params += '<li>'+
                             '<b>'+escape(block.args[0])+'</b> '+
                             '(<em>'+escape(block.kwargs.type)+'</em>) '+
-                            '- '+escape(block.body.trim())+
+                            param_body+
                         '</li>';
                     }else if(block.name == 'return'){
                         method_return = block.body.trim();
