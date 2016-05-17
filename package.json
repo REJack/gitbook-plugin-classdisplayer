@@ -1,6 +1,6 @@
 {
     "name": "gitbook-plugin-phpclassdisplayer",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Display PHP's classes, methods, functions or constants in your GitBook",
     "main": "index.js",
     "repository": {
@@ -14,6 +14,20 @@
     ],
     "engines": {
         "gitbook": ">=3.0.0-pre.8"
+    },
+    "gitbook": {
+        "properties": {
+            "scope": {
+                "type": "string",
+                "default": "::",
+                "description": "Defines the Scope Resolution Operator between Class and Method in anchors."
+            },
+            "anchors": {
+                "type": "bool",
+                "default": true,
+                "description": "Enables/Disables Anchors."
+            }
+        }
     },
     "dependencies": {
         "escape-html": "^1.0.3"
