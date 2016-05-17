@@ -26,9 +26,12 @@ module.exports = {
                     var class_name = parentBlock.args[0];
                     gl_class_name = class_name;
                     var class_desc = parentBlock.body.trim();
-                    var anchor = escape(class_name);
+	                var anchor_body = '';
+	                if(this.config.options.pluginsConfig.phpclassdisplayer.anchors === true){
+	                    anchor_body = '<a name="'+escape(class_name)+'"></a>';
+	                }
                     return '<div class="PHPclassDisplayer-class">'+
-                        '<a name="'+anchor+'"></a>'+
+                        anchor_body+
                         '<div class="PHPcD-title">Class <b>'+escape(class_name)+'</b></div>'+
                         '<div class="PHPcD-desc">' + escape(class_desc) + '<div>' +
                     '</div>';
@@ -45,12 +48,17 @@ module.exports = {
                 var const_desc = parentBlock.body.trim();
                 var anchor = escape(const_name);
                 var classSwitch = '';
+                var scope = this.config.options.pluginsConfig.phpclassdisplayer.scope;
                 if(gl_class_name !== ''){
-                    anchor = escape(gl_class_name)+'::'+escape(const_name);
+                    anchor = escape(gl_class_name)+scope+escape(const_name);
                     classSwitch = 'gl-';
                 }
+                var anchor_body = '';
+                if(this.config.options.pluginsConfig.phpclassdisplayer.anchors === true){
+                    anchor_body = '<a name="'+anchor+'"></a>';
+                }
                 return '<div class="PHPclassDisplayer-'+classSwitch+'const">'+
-                    '<a name="'+anchor+'"></a>'+
+                	anchor_body+
                     '<div class="PHPcD-title"><em>constant</em> <b>'+escape(const_name)+'</b></div>'+
                     '<div class="PHPcD-desc">'+escape(const_desc)+'<div>'+
                 '</div>';
@@ -98,9 +106,10 @@ module.exports = {
 
                 var classSwitch = 'function';
                 var anchor = escape(method_name_wo_args[0])+'()';
+                var scope = this.config.options.pluginsConfig.phpclassdisplayer.scope;
                 if(gl_class_name !== ''){
                     classSwitch = 'method';
-                    anchor = escape(gl_class_name)+'::'+escape(method_name_wo_args)[0]+'()';
+                    anchor = escape(gl_class_name)+scope+escape(method_name_wo_args[0])+'()';
                 }
                 var params = '';
                 if(param_count !== 0){
@@ -113,8 +122,12 @@ module.exports = {
                         '</td>' +
                     '</tr>';
                 }
+                var anchor_body = '';
+                if(this.config.options.pluginsConfig.phpclassdisplayer.anchors === true){
+                    anchor_body = '<a name="'+anchor+'"></a>';
+                }
                 return '<div class="PHPclassDisplayer-'+classSwitch+'">' +
-                    '<a name="'+anchor+'"></a>'+
+                    anchor_body+
                     '<div class="PHPcD-title">' + method_name + '</div>' +
                     '<div class="PHPcD-desc">' + escape(method_desc) + 
                         '<table>' + 
