@@ -11,3 +11,34 @@
 	margin-left: 30px;
 }
 
+.PHPclassDisplayer-method .PHPcD-params-list ul{
+	margin-bottom: 0px;
+	padding-left: 14px;
+}
+
+.PHPclassDisplayer-method .PHPcD-alert ul{
+	margin-bottom: 0px;
+}
+
+.markdown-section .PHPcD-alert table tr{
+	background-color: transparent;
+	border-top: none;
+}
+
+.PHPcD-alert .PHPcD-hint-icon,
+.PHPcD-alert .PHPcD-hint-text,
+.PHPcD-alert table{
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+.PHPcD-alert .PHPcD-hint-icon .fa-lg {
+  font-size: (4em / 3);
+  line-height: (3em / 4);
+  vertical-align: -15%;
+}
+.PHPcD-alert .PHPcD-hint-icon .fa-2x { font-size: 2em; }
+.PHPcD-alert .PHPcD-hint-icon .fa-3x { font-size: 3em; }
+.PHPcD-alert .PHPcD-hint-icon .fa-4x { font-size: 4em; }
+.PHPcD-alert .PHPcD-hint-icon .fa-5x { font-size: 5em; }
