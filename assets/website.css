@@ -1,0 +1,46 @@
+.phpclassdisplayer-class .phpcd-desc,
+.phpclassdisplayer-gl-const,
+.phpclassdisplayer-method{
+	margin-left: 30px;
+}
+
+.phpclassdisplayer-gl-const .phpcd-desc,
+.phpclassdisplayer-const .phpcd-desc,
+.phpclassdisplayer-method .phpcd-desc,
+.phpclassdisplayer-function .phpcd-desc{
+	margin-left: 30px;
+}
+
+.phpclassdisplayer-method .phpcd-params-list ul{
+	margin-bottom: 0px;
+	padding-left: 14px;
+}
+
+.phpclassdisplayer-method .phpcd-alert ul{
+	margin-bottom: 0px;
+}
+
+.phpcd-alert table tr{
+	background-color: transparent !important;
+	border-top: none !important;
+}
+
+.phpcd-hint-icon{
+	float:left; 
+	width: 15%;
+	text-align: center;
+}
+
+.clearfix{
+	clear: both;
+}
+
+.phpcd-alert .phpcd-hint-icon .fa-lg {
+  font-size: (4em / 3);
+  line-height: (3em / 4);
+  vertical-align: -15%;
+}
+.phpcd-alert .phpcd-hint-icon .fa-2x { font-size: 2em; }
+.phpcd-alert .phpcd-hint-icon .fa-3x { font-size: 3em; }
+.phpcd-alert .phpcd-hint-icon .fa-4x { font-size: 4em; }
+.phpcd-alert .phpcd-hint-icon .fa-5x { font-size: 5em; }

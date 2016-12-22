@@ -7,11 +7,17 @@ module.exports = {
     book: {
         assets: './assets',
         css: [
-            'phpclassdisplayer.css'
+            'website.css'
+        ]
+    },
+    ebook: {
+        assets: './assets',
+        css: [
+            'ebook.css'
         ]
     },
     blocks: {
-        PHPclassDisplayerReset:{
+        phpclassdisplayerReset:{
             process: function(parentBlock) {
                 gl_class_name = '';
                 return '';
@@ -22,7 +28,7 @@ module.exports = {
                 if(parentBlock){
                     var blocks = [parentBlock].concat(parentBlock.blocks);
                     if (!parentBlock.args[0]) {
-                        throw new Error('`PHPclassDisplayer` requires a argument as class-name');
+                        throw new Error('`phpclassdisplayer` requires a argument as class-name');
                     }
                     var class_name = parentBlock.args[0];
                     gl_class_name = class_name;
@@ -31,10 +37,10 @@ module.exports = {
 	                if(this.config.options.pluginsConfig.phpclassdisplayer.anchors === true){
 	                    anchor_body = '<a name="'+escape(class_name)+'"></a>';
 	                }
-                    return '<div class="PHPclassDisplayer-class">'+
+                    return '<div class="phpclassdisplayer-class">'+
                         anchor_body+
-                        '<div class="PHPcD-title">Class <b>'+escape(class_name)+'</b></div>'+
-                        '<div class="PHPcD-desc">' + escape(class_desc) + '<div>' +
+                        '<div class="phpcd-title">Class <b>'+escape(class_name)+'</b></div>'+
+                        '<div class="phpcd-desc">' + escape(class_desc) + '<div>' +
                     '</div>';
                 }
             }
@@ -58,10 +64,10 @@ module.exports = {
                 if(this.config.options.pluginsConfig.phpclassdisplayer.anchors === true){
                     anchor_body = '<a name="'+anchor+'"></a>';
                 }
-                return '<div class="PHPclassDisplayer-'+classSwitch+'const">'+
+                return '<div class="phpclassdisplayer-'+classSwitch+'const">'+
                 	anchor_body+
-                    '<div class="PHPcD-title"><em>constant</em> <b>'+escape(const_name)+'</b></div>'+
-                    '<div class="PHPcD-desc">'+escape(const_desc)+'<div>'+
+                    '<div class="phpcd-title"><em>constant</em> <b>'+escape(const_name)+'</b></div>'+
+                    '<div class="phpcd-desc">'+escape(const_desc)+'<div>'+
                 '</div>';
             }
         },
@@ -83,10 +89,10 @@ module.exports = {
                 var hint_iconcenter = this.config.options.pluginsConfig.phpclassdisplayer.hint_iconcenter;
 
                 var HINT_ICONS = {
-                    info: '<i class="fa fa-'+hint_icon_info+' '+hint_iconsize+'"></i>',
-                    tip: '<i class="fa fa-'+hint_icon_tip+' '+hint_iconsize+'"></i>',
-                    danger: '<i class="fa fa-'+hint_icon_danger+' '+hint_iconsize+'"></i>',
-                    working: '<i class="fa fa-'+hint_icon_working+' '+hint_iconsize+'"></i>'
+                    info: '<i class="fa fa-'+hint_icon_info+' '+hint_iconsize+'" aria-hidden="true"></i> ',
+                    tip: '<i class="fa fa-'+hint_icon_tip+' '+hint_iconsize+'" aria-hidden="true"></i> ',
+                    danger: '<i class="fa fa-'+hint_icon_danger+' '+hint_iconsize+'" aria-hidden="true"></i> ',
+                    working: '<i class="fa fa-'+hint_icon_working+' '+hint_iconsize+'" aria-hidden="true"></i> '
                 };
 
                 var blocks = [parentBlock].concat(parentBlock.blocks);
@@ -113,17 +119,9 @@ module.exports = {
                                 hint_center = 'align="middle"';
                             }
                             hint_body = markdown.page(hint_body).content;
-                            method_hint = '<div class="PHPcD-alert alert alert-'+HINT_CLASSES[style]+'">' + 
-                                '<table>' + 
-                                    '<tr>' + 
-                                        '<td width="15%" class="PHPcD-hint-icon" '+hint_center+'>' + 
-                                            '<b>'+HINT_ICONS[style]+'</b>'+
-                                        '</td>' +
-                                        '<td class="PHPcD-hint-text">' + 
-                                            hint_body.replace(/<p>|<\/p>/gi, '')+
-                                        '</td>' +
-                                    '</tr>' + 
-                                '</table>' +
+                            method_hint = '<div class="phpcd-alert alert alert-'+HINT_CLASSES[style]+'" role="alert">' + 
+                                HINT_ICONS[style]+
+                                hint_body.replace(/<p>|<\/p>/gi, '')+
                             '</div>';
                         }
                     }else if(block.name == 'param'){
@@ -146,10 +144,10 @@ module.exports = {
                             return_body = block.body.trim();
                             return_body = markdown.page(return_body).content.replace(/<p>|<\/p>/gi, '');
                             method_return = '<tr>' + 
-                                '<td width="20%" class="PHPcD-return-title">' + 
+                                '<td width="20%" class="phpcd-return-title">' + 
                                     '<b>Returns:</b>'+
                                 '</td>' +
-                                '<td class="PHPcD-return-text">' + 
+                                '<td class="phpcd-return-text">' + 
                                     return_body+
                                 '</td>' +
                             '</tr>';
@@ -168,10 +166,10 @@ module.exports = {
                 var params = '';
                 if(param_count !== 0){
                     params = '<tr>' + 
-                        '<td width="20%" valign="top" class="PHPcD-params-title">' + 
+                        '<td width="20%" valign="top" class="phpcd-params-title">' + 
                             '<b>Parameters:</b>'+
                         '</td>' +
-                        '<td class="PHPcD-params-list">' + 
+                        '<td class="phpcd-params-list">' + 
                             method_params+
                         '</td>' +
                     '</tr>';
@@ -180,10 +178,10 @@ module.exports = {
                 if(this.config.options.pluginsConfig.phpclassdisplayer.anchors === true){
                     anchor_body = '<a name="'+anchor+'"></a>';
                 }
-                return '<div class="PHPclassDisplayer-'+classSwitch+'">' +
+                return '<div class="phpclassdisplayer-'+classSwitch+'">' +
                     anchor_body+
-                    '<div class="PHPcD-title">' + method_name + '</div>' +
-                    '<div class="PHPcD-desc">' + markdown.page(method_desc).content + 
+                    '<div class="phpcd-title">' + method_name + '</div>' +
+                    '<div class="phpcd-desc">' + markdown.page(method_desc).content + 
                         '<table>' + 
                             params +
                             method_return +
