@@ -157,11 +157,11 @@ module.exports = {
                 method_params += '</ul>';
 
                 var classSwitch = 'function';
-                var anchor = escape(method_name_wo_args[0])+'()';
+                var anchor = escape(method_name_wo_args[0]);
                 var scope = this.config.options.pluginsConfig.phpclassdisplayer.scope;
                 if(gl_class_name !== ''){
                     classSwitch = 'method';
-                    anchor = escape(gl_class_name)+scope+escape(method_name_wo_args[0])+'()';
+                    anchor = escape(gl_class_name)+scope+escape(method_name_wo_args[0]);
                 }
                 var params = '';
                 if(param_count !== 0){
